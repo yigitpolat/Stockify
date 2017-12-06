@@ -5,31 +5,3 @@
 	<classpathentry kind="output" path="bin"/>
 
 </classpath>
-
-<classpath>
-    <classpathentry kind="src" path="src"/>
-    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.osgi_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.osgi.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.ui.forms_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.ui.forms.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.core.commands_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.core.commands.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.equinox.common_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.equinox.common.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.equinox.registry_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.equinox.registry.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.core.runtime_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.core.runtime.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.text_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.text.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.swt.os.platform_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.swt.os.platform.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.jface_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.jface.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.jface.text_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.jface.text.source_X.X.X.jar"/>
-    <classpathentry kind="lib" path="C:/eclipse/plugins/org.eclipse.ui.workbench_X.X.X.jar"
-        sourcepath="C:/eclipse/plugins/org.eclipse.ui.workbench.source_X.X.X.jar"/>
-    <classpathentry kind="output" path="bin"/>
-</classpath>
