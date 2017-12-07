@@ -1,8 +1,5 @@
 package Model;
 
-/**
- * Created by berku on 7.12.2017.
- */
 public class Brand {
     private int id;
     private String name;
