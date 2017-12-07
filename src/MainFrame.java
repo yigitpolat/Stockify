@@ -18,6 +18,15 @@ public class MainFrame extends JFrame {
 	private JTextField purchasePriceField;
 	private JTextField salePriceField;
 	private JTextField purchaseDateField;
+	private JTextField productCodeField2;
+	private JTextField salePriceField2;
+	private JTextField saleDateField2;
+	private JTextField brandNameField2;
+	private JTextField productCodeField3;
+	private JTextField SalePriceField3;
+	private JTextField refundDateField;
+	private JTextField startDateField;
+	private JTextField EndDateField;
 
 	/**
 	 * Launch the application.
@@ -114,20 +123,130 @@ public class MainFrame extends JFrame {
 		
 		JPanel sellProductPanel = new JPanel();
 		mainPanel.addTab("Sell Product", null, sellProductPanel, null);
+		sellProductPanel.setLayout(null);
+		
+		JLabel lblProductCode2 = new JLabel("Product Code");
+		lblProductCode2.setBounds(53, 42, 101, 15);
+		sellProductPanel.add(lblProductCode2);
+		
+		JLabel lblSalePrice2 = new JLabel("Sale Price");
+		lblSalePrice2.setBounds(53, 69, 101, 15);
+		sellProductPanel.add(lblSalePrice2);
+		
+		JLabel lblSaleDate2 = new JLabel("Sale Date");
+		lblSaleDate2.setBounds(53, 96, 105, 15);
+		sellProductPanel.add(lblSaleDate2);
+		
+		productCodeField2 = new JTextField();
+		productCodeField2.setBounds(172, 40, 114, 19);
+		sellProductPanel.add(productCodeField2);
+		productCodeField2.setColumns(10);
+		
+		salePriceField2 = new JTextField();
+		salePriceField2.setBounds(172, 67, 114, 19);
+		sellProductPanel.add(salePriceField2);
+		salePriceField2.setColumns(10);
+		
+		saleDateField2 = new JTextField();
+		saleDateField2.setBounds(172, 94, 114, 19);
+		sellProductPanel.add(saleDateField2);
+		saleDateField2.setColumns(10);
+		
+		JButton btnSell = new JButton("Sell");
+		btnSell.setBounds(172, 138, 106, 25);
+		sellProductPanel.add(btnSell);
+		
+		JPanel addBrandPanel = new JPanel();
+		mainPanel.addTab("Add Brand", null, addBrandPanel, null);
+		addBrandPanel.setLayout(null);
+		
+		JLabel lblBrandName2 = new JLabel("Brand Name");
+		lblBrandName2.setBounds(73, 133, 93, 15);
+		addBrandPanel.add(lblBrandName2);
+		
+		brandNameField2 = new JTextField();
+		brandNameField2.setBounds(184, 131, 114, 19);
+		addBrandPanel.add(brandNameField2);
+		brandNameField2.setColumns(10);
+		
+		JButton btnAdd2 = new JButton("Add");
+		btnAdd2.setBounds(184, 162, 106, 25);
+		addBrandPanel.add(btnAdd2);
 		
 		JPanel changeProductPanel = new JPanel();
 		mainPanel.addTab("Change Product", null, changeProductPanel, null);
 		
 		JPanel refundProductPanel = new JPanel();
 		mainPanel.addTab("RefundProduct", null, refundProductPanel, null);
+		refundProductPanel.setLayout(null);
 		
-		JPanel addBrandPanel = new JPanel();
-		mainPanel.addTab("Add Brand", null, addBrandPanel, null);
+		JLabel lblProductCode3 = new JLabel("Product Code");
+		lblProductCode3.setBounds(66, 67, 83, 15);
+		refundProductPanel.add(lblProductCode3);
+		
+		JLabel lblSalePrice3 = new JLabel("Sale Price");
+		lblSalePrice3.setBounds(66, 94, 83, 15);
+		refundProductPanel.add(lblSalePrice3);
+		
+		JLabel lblRefundDate = new JLabel("Refund Date");
+		lblRefundDate.setBounds(66, 121, 83, 15);
+		refundProductPanel.add(lblRefundDate);
+		
+		productCodeField3 = new JTextField();
+		productCodeField3.setBounds(182, 65, 114, 19);
+		refundProductPanel.add(productCodeField3);
+		productCodeField3.setColumns(10);
+		
+		SalePriceField3 = new JTextField();
+		SalePriceField3.setBounds(182, 93, 114, 17);
+		refundProductPanel.add(SalePriceField3);
+		SalePriceField3.setColumns(10);
+		
+		refundDateField = new JTextField();
+		refundDateField.setBounds(182, 119, 114, 19);
+		refundProductPanel.add(refundDateField);
+		refundDateField.setColumns(10);
+		
+		JButton btnRefund = new JButton("Refund");
+		btnRefund.setBounds(182, 155, 106, 25);
+		refundProductPanel.add(btnRefund);
 		
 		JPanel showIncomeAndExpPanel = new JPanel();
 		mainPanel.addTab("Income & Expenditure", null, showIncomeAndExpPanel, null);
+		showIncomeAndExpPanel.setLayout(null);
 		
-		JPanel showProductsPanel = new JPanel();
-		mainPanel.addTab("Show Products", null, showProductsPanel, null);
+		JLabel lblStartDate = new JLabel("Start Date");
+		lblStartDate.setBounds(164, 58, 102, 15);
+		showIncomeAndExpPanel.add(lblStartDate);
+		
+		JLabel lblEndDate = new JLabel("End Date");
+		lblEndDate.setBounds(340, 58, 102, 15);
+		showIncomeAndExpPanel.add(lblEndDate);
+		
+		startDateField = new JTextField();
+		startDateField.setBounds(164, 100, 114, 19);
+		showIncomeAndExpPanel.add(startDateField);
+		startDateField.setColumns(10);
+		
+		EndDateField = new JTextField();
+		EndDateField.setBounds(340, 100, 114, 19);
+		showIncomeAndExpPanel.add(EndDateField);
+		EndDateField.setColumns(10);
+		
+		JButton btnList = new JButton("List");
+		btnList.setBounds(164, 160, 106, 25);
+		showIncomeAndExpPanel.add(btnList);
+		
+		JPanel productListPanel = new JPanel();
+		mainPanel.addTab("Show Products", null, productListPanel, null);
+		productListPanel.setLayout(null);
+		
+		JButton btnShowList = new JButton("Show List");
+		btnShowList.setBounds(102, 74, 106, 25);
+		productListPanel.add(btnShowList);
+		
+		JButton btnSortList = new JButton("Sort List");
+		btnSortList.setBounds(102, 131, 106, 25);
+		productListPanel.add(btnSortList);
 	}
 }
