@@ -65,6 +65,7 @@ public class LoginFrame {
 		passwordField.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = usernameField.getText();
@@ -76,6 +77,7 @@ public class LoginFrame {
 				
 			}
 		});
+		
 		btnLogin.setBounds(202, 169, 117, 29);
 		frame.getContentPane().add(btnLogin);
 	}

@@ -5,10 +5,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField productCodeField;
+	private JTextField brandNameField;
+	private JTextField bodySizeField;
+	private JTextField purchasePriceField;
+	private JTextField salePriceField;
+	private JTextField purchaseDateField;
 
 	/**
 	 * Launch the application.
@@ -43,6 +52,65 @@ public class MainFrame extends JFrame {
 		
 		JPanel addProductPanel = new JPanel();
 		mainPanel.addTab("Add Product", null, addProductPanel, null);
+		addProductPanel.setLayout(null);
+		
+		JLabel lblProductCode = new JLabel("Product Code");
+		lblProductCode.setBounds(43, 39, 121, 15);
+		addProductPanel.add(lblProductCode);
+		
+		JLabel lblBrandName = new JLabel("Brand Name");
+		lblBrandName.setBounds(43, 64, 121, 15);
+		addProductPanel.add(lblBrandName);
+		
+		JLabel lblBodySize = new JLabel("Body Size");
+		lblBodySize.setBounds(43, 91, 126, 15);
+		addProductPanel.add(lblBodySize);
+		
+		JLabel lblPurchasePrice = new JLabel("Purchase Price");
+		lblPurchasePrice.setBounds(43, 118, 121, 15);
+		addProductPanel.add(lblPurchasePrice);
+		
+		JLabel lblSalePrice = new JLabel("Sale Price");
+		lblSalePrice.setBounds(43, 145, 121, 15);
+		addProductPanel.add(lblSalePrice);
+		
+		JLabel lblPurchaseDate = new JLabel("Purchase Date");
+		lblPurchaseDate.setBounds(43, 172, 94, 15);
+		addProductPanel.add(lblPurchaseDate);
+		
+		productCodeField = new JTextField();
+		productCodeField.setBounds(176, 37, 114, 19);
+		addProductPanel.add(productCodeField);
+		productCodeField.setColumns(10);
+		
+		brandNameField = new JTextField();
+		brandNameField.setBounds(176, 62, 114, 19);
+		addProductPanel.add(brandNameField);
+		brandNameField.setColumns(10);
+		
+		bodySizeField = new JTextField();
+		bodySizeField.setBounds(176, 89, 114, 19);
+		addProductPanel.add(bodySizeField);
+		bodySizeField.setColumns(10);
+		
+		purchasePriceField = new JTextField();
+		purchasePriceField.setBounds(176, 116, 114, 19);
+		addProductPanel.add(purchasePriceField);
+		purchasePriceField.setColumns(10);
+		
+		salePriceField = new JTextField();
+		salePriceField.setBounds(176, 143, 114, 19);
+		addProductPanel.add(salePriceField);
+		salePriceField.setColumns(10);
+		
+		purchaseDateField = new JTextField();
+		purchaseDateField.setBounds(176, 170, 114, 19);
+		addProductPanel.add(purchaseDateField);
+		purchaseDateField.setColumns(10);
+		
+		JButton btnAdd = new JButton("Add");
+		btnAdd.setBounds(176, 212, 106, 25);
+		addProductPanel.add(btnAdd);
 		
 		JPanel sellProductPanel = new JPanel();
 		mainPanel.addTab("Sell Product", null, sellProductPanel, null);
