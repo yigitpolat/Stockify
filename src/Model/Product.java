@@ -83,4 +83,18 @@ public class Product {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", brand=" + brand.toString() +
+                ", sellPrice=" + sellPrice +
+                ", purchasePrice=" + purchasePrice +
+                ", purchaseDate=" + purchaseDate +
+                ", bodySize='" + bodySize + '\'' +
+                ", isSold=" + isSold +
+                '}';
+    }
 }
