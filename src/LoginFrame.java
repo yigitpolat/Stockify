@@ -72,7 +72,11 @@ public class LoginFrame {
 				String password = passwordField.getText();
 				
 				if(username.equals("admin") && password.equals("admin")) {
-					JOptionPane.showMessageDialog(frame, "you are succesfull");
+					JOptionPane.showMessageDialog(frame, "You are succesfull");
+					createMainFrame();
+				}
+				else{
+					JOptionPane.showMessageDialog(frame,"Invalid Id & Password");
 				}
 				
 			}
@@ -80,5 +84,14 @@ public class LoginFrame {
 		
 		btnLogin.setBounds(202, 169, 117, 29);
 		frame.getContentPane().add(btnLogin);
+	}
+
+	/*User successfully entered the main frame, login frame is closed
+					* and new mainFrame is set to visible*/
+
+	public void createMainFrame(){
+		frame.setVisible(false);
+		MainFrame mainframe = new MainFrame();
+		mainframe.setVisible(true);
 	}
 }
