@@ -20,7 +20,6 @@ public class LoginHandler implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(frame.getUsernameField().getText()+"xd"+frame.getPasswordField().getText());
         if(id.equals(frame.getUsernameField().getText()) && password.equals(frame.getPasswordField().getText())){
             JOptionPane.showMessageDialog(frame, "You are successful");
             createMainFrame();
