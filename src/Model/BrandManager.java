@@ -6,9 +6,10 @@ import java.util.ArrayList;
  * Created by berku on 8.12.2017.
  */
 public class BrandManager {
-    private ArrayList<Brand> brands;
+    private ArrayList<Brand> brands = new ArrayList<>();
 
     public BrandManager() {
+        brands.add(new Brand(1,"brand"));
         updateBrands();
     }
 

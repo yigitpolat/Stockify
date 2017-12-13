@@ -1,12 +1,16 @@
 package View;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import Controller.ProductHandler;
+
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainFrame extends JFrame {
 
@@ -26,6 +30,7 @@ public class MainFrame extends JFrame {
 	private JTextField refundDateField;
 	private JTextField startDateField;
 	private JTextField EndDateField;
+	private ProductHandler productHandler = new ProductHandler(this);
 
 	/**
 	 * Create the frame.
@@ -103,7 +108,29 @@ public class MainFrame extends JFrame {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setBounds(176, 212, 106, 25);
 		addProductPanel.add(btnAdd);
-		
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            /*ProductTextFieldName is missing, generic string will be
+            implemented until it's done
+            */
+
+            public void actionPerformed(ActionEvent e){
+                int productId = Integer.parseInt(productCodeField.getText());
+                float purchasePrice = Float.parseFloat(purchasePriceField.getText());
+                float sellPrice = Float.parseFloat(salePriceField.getText());
+                DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+                Date purchaseDate;
+                try {
+                    purchaseDate = format.parse(purchaseDateField.getText());
+                    productHandler.addProduct(productId,"BenBirProductIsmiyim",brandNameField.getText(),
+                            purchasePrice,sellPrice,purchaseDate,bodySizeField.getText());
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+        });
+
 		JPanel sellProductPanel = new JPanel();
 		mainPanel.addTab("Sell Product", null, sellProductPanel, null);
 		sellProductPanel.setLayout(null);
@@ -138,6 +165,21 @@ public class MainFrame extends JFrame {
 		JButton btnSell = new JButton("Sell");
 		btnSell.setBounds(172, 138, 106, 25);
 		sellProductPanel.add(btnSell);
+		btnSell.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int productId = Integer.parseInt(productCodeField2.getText());
+                float salePrice = Float.parseFloat(salePriceField2.getText());
+                DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+                Date sellDate;
+                try {
+                    sellDate = format.parse(saleDateField2.getText());
+                    productHandler.sellProduct(productId,salePrice,sellDate);
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
 		
 		JPanel addBrandPanel = new JPanel();
 		mainPanel.addTab("Add Brand", null, addBrandPanel, null);

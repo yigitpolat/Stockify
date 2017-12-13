@@ -7,38 +7,39 @@ public class Stock {
     private Database database;
     private Connection connection;
     private BrandManager brandManager;
-    private ArrayList<Product> products;
+    private ArrayList<Product> products = new ArrayList<>();
 
     public Stock() {
         init();
-        updateProducts();
+     //   updateProducts();
     }
 
     public void init(){
         brandManager = new BrandManager();
-        database = new Database();
-        database.connect();
-        connection = database.getConnection();
+     //   database = new Database();
+     //   database.connect();
+     //   connection = database.getConnection();
     }
 
     public ArrayList<Product> getProducts() {
-        updateProducts();
+     //   updateProducts();
         return products;
     }
 
     public void sellProduct(Product product) {
         // TODO: sellProduct progress via database connection
-        updateProducts();
+      //  updateProducts();
     }
 
     public void addProduct(Product product) {
+        products.add(product);
         // TODO: addProduct progress via database connection
-        updateProducts();
+      //  updateProducts();
     }
 
     public void refundProduct(Product product) {
         // TODO: refundProduct progress via database connection
-        updateProducts();
+       // updateProducts();
     }
 
     public void changeProduct(Product product) {
@@ -46,7 +47,7 @@ public class Stock {
         sellProduct(product);
     }
 
-    public void updateProducts() {
+  /*  public void updateProducts() {
         ArrayList<Product> updatedProducts = new ArrayList<>();
         String query = "SELECT * FROM product";
         try {
@@ -70,5 +71,9 @@ public class Stock {
             e.printStackTrace();
         }
         products = updatedProducts;
+    }*/
+
+    public BrandManager getBrandManager(){
+        return brandManager;
     }
 }
