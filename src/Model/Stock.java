@@ -1,7 +1,8 @@
 package Model;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.util.*;
 
 public class Stock {
     private Database database;
@@ -11,43 +12,50 @@ public class Stock {
 
     public Stock() {
         init();
-     //   updateProducts();
+        updateProducts();
     }
 
-    public void init(){
+    public void init() {
         brandManager = new BrandManager();
-     //   database = new Database();
-     //   database.connect();
-     //   connection = database.getConnection();
+        database = new Database();
+        database.connect();
+        connection = database.getConnection();
     }
 
     public ArrayList<Product> getProducts() {
-     //   updateProducts();
+        updateProducts();
         return products;
     }
 
-    public void sellProduct(Product product) {
+    public void sellProduct(int productId, float sellPrice, Date sellDate) {
         // TODO: sellProduct progress via database connection
-      //  updateProducts();
+        updateProducts();
     }
 
-    public void addProduct(Product product) {
-        products.add(product);
+    public void addProduct(int productId, String name, Brand brand, float sellPrice, float purchasePrice, java.util.Date purchaseDate, String bodySize, boolean isSold) {
         // TODO: addProduct progress via database connection
-      //  updateProducts();
+        try {
+            // This is for testing
+            String query = "INSERT INTO product (id, name, brand_id, sell_price, purchase_price, body_size, is_sold, sell_date, purchase_date) VALUES ('523223', 'test', '1', '12', '23', '2', '0', NULL, '2017-12-12')";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        updateProducts();
     }
 
-    public void refundProduct(Product product) {
+    public void refundProduct(int productId) {
         // TODO: refundProduct progress via database connection
-       // updateProducts();
+        updateProducts();
     }
 
-    public void changeProduct(Product product) {
-        refundProduct(product);
-        sellProduct(product);
+    public void changeProduct(int refundedProductId, int soldProductId, float sellPrice, Date sellDate) {
+        refundProduct(refundedProductId);
+        sellProduct(soldProductId, sellPrice, sellDate);
     }
 
-  /*  public void updateProducts() {
+    public void updateProducts() {
         ArrayList<Product> updatedProducts = new ArrayList<>();
         String query = "SELECT * FROM product";
         try {
@@ -71,9 +79,9 @@ public class Stock {
             e.printStackTrace();
         }
         products = updatedProducts;
-    }*/
+    }
 
-    public BrandManager getBrandManager(){
+    public BrandManager getBrandManager() {
         return brandManager;
     }
 }

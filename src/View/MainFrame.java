@@ -104,12 +104,12 @@ public class MainFrame extends JFrame {
 		purchasePriceField.setBounds(176, 145, 114, 19);
 		addProductPanel.add(purchasePriceField);
 		purchasePriceField.setColumns(10);
-		
+
 		salePriceField = new JTextField();
 		salePriceField.setBounds(176, 172, 114, 19);
 		addProductPanel.add(salePriceField);
 		salePriceField.setColumns(10);
-		
+
 		purchaseDateField = new JTextField();
 		purchaseDateField.setBounds(176, 199, 114, 19);
 		addProductPanel.add(purchaseDateField);
@@ -249,7 +249,7 @@ public class MainFrame extends JFrame {
 		JPanel showIncomeAndExpPanel = new JPanel();
 		mainPanel.addTab("Income & Expenditure", null, showIncomeAndExpPanel, null);
 		showIncomeAndExpPanel.setLayout(null);
-		
+
 		JLabel lblStartDate = new JLabel("Start Date");
 		lblStartDate.setBounds(164, 58, 102, 15);
 		showIncomeAndExpPanel.add(lblStartDate);
