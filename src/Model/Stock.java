@@ -1,7 +1,7 @@
 package Model;
 
 import java.sql.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.*;
 
 public class Stock {
@@ -25,6 +25,14 @@ public class Stock {
     public ArrayList<Product> getProducts() {
         updateProducts();
         return products;
+    }
+
+    public Product getProductWithId(int id) {
+        for (Product product : products) {
+            if (id == product.getId())
+                return product;
+        }
+        return null;
     }
 
     public void sellProduct(int productId, float sellPrice, Date sellDate) {
@@ -62,23 +70,36 @@ public class Stock {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                // Get product information from database
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                Brand brand = brandManager.getBrandWithID(rs.getInt("brand_id"));
-                float sellPrice = rs.getFloat("sell_price");
-                float purchasePrice = rs.getFloat("purchase_price");
-                Date date = new Date(2017, 12, 3);
-                String bodySize = rs.getString("body_size");
-                boolean isSold = false; // TODO: will change
-
-                // Add product to updated products
-                updatedProducts.add(new Product(id, name, brand, sellPrice, purchasePrice, date, bodySize, isSold));
+                updatedProducts.add(getProductFromResultSet(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         products = updatedProducts;
+    }
+
+    public Product getProductFromResultSet(ResultSet rs) {
+        // Get product information from database
+        Product product = null;
+        try {
+            int id              = rs.getInt("id");
+            String name         = rs.getString("name");
+            Brand brand         = brandManager.getBrandWithID(rs.getInt("brand_id"));
+            String bodySize     = rs.getString("body_size");
+            float purchasePrice = rs.getFloat("purchase_price");
+            java.sql.Date pd    = rs.getDate("purchase_date");
+            Date purchaseDate   =  new java.util.Date(pd.getTime());
+            boolean isSold      = rs.getBoolean("is_sold"); // TODO: will change
+            float sellPrice     = rs.getFloat("sell_price");
+            java.sql.Date sd    = rs.getDate("sell_date");
+            Date sellDate       = new java.util.Date(sd.getTime());
+
+            product = new Product(id, name, brand, bodySize, purchasePrice, purchaseDate, isSold, sellPrice, sellDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return product;
     }
 
     public BrandManager getBrandManager() {

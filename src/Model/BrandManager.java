@@ -10,13 +10,13 @@ public class BrandManager {
 
     public BrandManager() {
         brands.add(new Brand(1, "brand"));
+        brands.add(new Brand(2, "brand2"));
         updateBrands();
     }
 
     public ArrayList<Brand> getBrands() {
         return brands;
     }
-
     public Brand getBrandWithID(int id) {
         updateBrands();
         for (Brand brand : brands) {

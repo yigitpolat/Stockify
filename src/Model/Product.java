@@ -9,11 +9,12 @@ public class Product {
     private float sellPrice;
     private float purchasePrice;
     private Date purchaseDate;
+    private Date sellDate;
     private String bodySize;
     private boolean isSold;
 
-    public Product(int id, String name, Brand brand, float sellPrice, float purchasePrice,
-                   Date purchaseDate, String bodySize, boolean isSold) {
+    public Product(int id, String name, Brand brand, String bodySize, float purchasePrice,
+                   Date purchaseDate, boolean isSold, float sellPrice, Date sellDate) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -22,6 +23,7 @@ public class Product {
         this.purchaseDate = purchaseDate;
         this.bodySize = bodySize;
         this.isSold = isSold;
+        this.sellDate = sellDate;
     }
 
     public boolean isSold() {
@@ -89,12 +91,15 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", brand=" + brand.toString() +
+                ", brand=" + brand +
                 ", sellPrice=" + sellPrice +
                 ", purchasePrice=" + purchasePrice +
                 ", purchaseDate=" + purchaseDate +
+                ", sellDate=" + sellDate +
                 ", bodySize='" + bodySize + '\'' +
                 ", isSold=" + isSold +
                 '}';
     }
 }
+
+

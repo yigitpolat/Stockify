@@ -35,20 +35,12 @@ public class ProductHandler {
     }
 
     public void sellProduct(int productId, float sellPrice, Date sellDate) {
-        boolean isProductFound = false;
-        Product product = null;
-        for (int i = 0; i < stock.getProducts().size(); i++) {
-            if (productId == stock.getProducts().get(i).getId()) {
-                isProductFound = true;
-                product = stock.getProducts().get(i);
-                break;
-            }
-        }
-        if (isProductFound) {
+        Product product = stock.getProductWithId(productId);
+        if (product != null) {
             if (product.isSold()) {
                 JOptionPane.showMessageDialog(mainFrame, "This product is already sold!");
             } else {
-                sellProduct(productId, sellPrice, sellDate);
+                stock.sellProduct(productId, sellPrice, sellDate);
                 JOptionPane.showMessageDialog(mainFrame, "This product is successfully sold!");
             }
         } else {
