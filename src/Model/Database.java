@@ -14,7 +14,7 @@ public class Database {
             System.out.println("Trying to connect database");
             String url = "jdbc:mysql://185.111.233.70/hriubare_stckfy";
             String user = "hriubare_admin";
-            String pass = ""; // Ask for password
+            String pass = "U8mzDW6OI[tq";
             connection = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
             e.printStackTrace();
