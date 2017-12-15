@@ -41,6 +41,7 @@ public class ProductHandler {
             if (product.isSold()) {
                 JOptionPane.showMessageDialog(mainFrame, "This product is already sold!");
             } else {
+                System.out.println(sellDate.toString());
                 stock.sellProduct(productId, sellPrice, sellDate);
                 JOptionPane.showMessageDialog(mainFrame, "This product is successfully sold!");
             }

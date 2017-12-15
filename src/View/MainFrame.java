@@ -265,7 +265,7 @@ public class MainFrame extends JFrame {
                 int productId = Integer.parseInt(productCodeField2.getText());
                 float salePrice = Float.parseFloat(salePriceField2.getText());
                 DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-                Date sellDate;
+                java.util.Date sellDate;
                 try {
                     sellDate = format.parse(saleDateField2.getText());
                     productHandler.sellProduct(productId,salePrice,sellDate);

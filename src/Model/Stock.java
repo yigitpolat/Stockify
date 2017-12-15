@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Stock {
 	private Database database;
-	private Connection connection;
+	private static Connection connection;
 	private BrandManager brandManager;
 	private ArrayList<Product> products = new ArrayList<>();
 
@@ -35,12 +35,13 @@ public class Stock {
 		return null;
 	}
 
-	public void sellProduct(int productId, float sellPrice, Date sellDate) {
-		String query = "UPDATE product SET is_sold=true where id=" + productId;
+	public void sellProduct(int productId, float sellPrice, java.util.Date sellDate) {
 		try {
+			java.sql.Date sd = new java.sql.Date(sellDate.getTime());
+			System.out.println(sd.toString());
+			String query = "UPDATE product SET is_sold= true, sell_price="+ sellPrice +", sell_date='"+ sd+"' where id=" + productId;
 			Statement statement = connection.createStatement();
-			PreparedStatement st = connection.prepareStatement(query);
-			st.executeUpdate();
+			statement.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
