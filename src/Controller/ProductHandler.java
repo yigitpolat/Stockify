@@ -47,7 +47,6 @@ public class ProductHandler {
         } else {
             JOptionPane.showMessageDialog(mainFrame, "This product does not exist!");
         }
-
     }
 
     public void refundProduct(int productId, int salePriceField3Text, String refundDateFieldText){
@@ -69,6 +68,4 @@ public class ProductHandler {
     public BrandHandler getBrandHandler(){
         return brandHandler;
     }
-
-
 }
