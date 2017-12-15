@@ -7,13 +7,13 @@ import Model.Stock;
 import View.MainFrame;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class ProductHandler {
     private MainFrame mainFrame;
     private Stock stock;
     private BrandManager brandManager;
+    private BrandHandler brandHandler = new BrandHandler(mainFrame,stock);
 
     public ProductHandler(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
@@ -64,6 +64,10 @@ public class ProductHandler {
         else{
             JOptionPane.showMessageDialog(mainFrame,"This product does not exist!");
         }
+    }
+
+    public BrandHandler getBrandHandler(){
+        return brandHandler;
     }
 
 
