@@ -120,14 +120,14 @@ public class MainFrame extends JFrame {
 		addProductPanel.add(btnAdd);
         btnAdd.addActionListener(new ActionListener() {
             @Override
-            /*ProductTextFieldName is missing, generic string will be
-            implemented until it's done
+            /*
+            Add Operation starts here
             */
 
             public void actionPerformed(ActionEvent e){
                 int productId = Integer.parseInt(productCodeField.getText());
                 float purchasePrice = Float.parseFloat(purchasePriceField.getText());
-                float sellPrice = Float.parseFloat(salePriceField.getText());
+                float sellPrice = 0;
                 DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
                 java.util.Date purchaseDate;
                 try {
@@ -177,6 +177,10 @@ public class MainFrame extends JFrame {
 		sellProductPanel.add(btnSell);
 		btnSell.addActionListener(new ActionListener() {
             @Override
+
+            /*
+            * Sell Operation starts here
+            * */
             public void actionPerformed(ActionEvent e) {
                 int productId = Integer.parseInt(productCodeField2.getText());
                 float salePrice = Float.parseFloat(salePriceField2.getText());
@@ -207,6 +211,12 @@ public class MainFrame extends JFrame {
 		JButton btnAdd2 = new JButton("Add");
 		btnAdd2.setBounds(184, 162, 106, 25);
 		addBrandPanel.add(btnAdd2);
+		btnAdd2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                productHandler.getBrandHandler().addBrand(brandNameField2.getText());
+            }
+        });
 		
 		JPanel changeProductPanel = new JPanel();
 		mainPanel.addTab("Change Product", null, changeProductPanel, null);
@@ -249,7 +259,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int productId = Integer.parseInt(productCodeField3.getText());
-                int salePrice = Integer.parseInt(SalePriceField3.getText());
+                int salePrice = 0;
                 productHandler.refundProduct(productId,salePrice,refundDateField.getText());
             }
         });
