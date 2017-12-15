@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 public class LoginHandler implements ActionListener{
 
     /*LoginHandler have a unique id and password which is not connected to database*/
-    String id="admin";
-    String password="admin";
+    String id="1";
+    String password="1";
     LoginFrame frame;
 
 

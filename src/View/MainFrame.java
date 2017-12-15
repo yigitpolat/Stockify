@@ -129,10 +129,10 @@ public class MainFrame extends JFrame {
                 float purchasePrice = Float.parseFloat(purchasePriceField.getText());
                 float sellPrice = Float.parseFloat(salePriceField.getText());
                 DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-                Date purchaseDate;
+                java.util.Date purchaseDate;
                 try {
                     purchaseDate = format.parse(purchaseDateField.getText());
-                    productHandler.addProduct(productId,"BenBirProductIsmiyim",brandNameField.getText(),
+                    productHandler.addProduct(productId,productNameField.getText(),brandNameField.getText(),
                             purchasePrice,sellPrice,purchaseDate,bodySizeField.getText());
                 } catch (ParseException e1) {
                     e1.printStackTrace();
@@ -245,6 +245,14 @@ public class MainFrame extends JFrame {
 		JButton btnRefund = new JButton("Refund");
 		btnRefund.setBounds(182, 155, 106, 25);
 		refundProductPanel.add(btnRefund);
+		btnRefund.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int productId = Integer.parseInt(productCodeField3.getText());
+                int salePrice = Integer.parseInt(SalePriceField3.getText());
+                productHandler.refundProduct(productId,salePrice,refundDateField.getText());
+            }
+        });
 		
 		JPanel showIncomeAndExpPanel = new JPanel();
 		mainPanel.addTab("Income & Expenditure", null, showIncomeAndExpPanel, null);

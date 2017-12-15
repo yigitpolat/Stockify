@@ -12,11 +12,12 @@ import java.util.Date;
 
 public class ProductHandler {
     private MainFrame mainFrame;
-    private Stock stock = new Stock();
+    private Stock stock;
     private BrandManager brandManager;
 
     public ProductHandler(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
+        this.stock= new Stock();
         this.brandManager = stock.getBrandManager();
     }
 
@@ -49,14 +50,21 @@ public class ProductHandler {
 
     }
 
+    public void refundProduct(int productId, int salePriceField3Text, String refundDateFieldText){
+        Product product = stock.getProductWithId(productId);
+        if(product != null){
+            if(!product.isSold()){
+                JOptionPane.showMessageDialog(mainFrame, "This product is not sold!");
+            }
+            else{
+                stock.refundProduct(productId);
+                JOptionPane.showMessageDialog(mainFrame, "This product refunded successfully!");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(mainFrame,"This product does not exist!");
+        }
+    }
+
 
 }
-
-/* For Testing
-System.out.println(stock.getProducts().size());
-for(int i=0;i<stock.getProducts().size();i++){
-    System.out.println(stock.getProducts().get(i).getId()+" "+stock.getProducts().get(i).getName()+" "+stock.getProducts().get(i).getBrand().getName()+" "+
-            stock.getProducts().get(i).getPurchasePrice()+" "+stock.getProducts().get(i).getSellPrice()+" "+stock.getProducts().get(i).getBodySize()+" "+
-            stock.getProducts().get(i).getPurchaseDate()+" "+stock.getProducts().get(i).isSold());
-}
-*/

@@ -44,7 +44,9 @@ public class Stock {
         // TODO: addProduct progress via database connection
         try {
             // This is for testing
-            String query = "INSERT INTO product (id, name, brand_id, sell_price, purchase_price, body_size, is_sold, sell_date, purchase_date) VALUES ('523223', 'test', '1', '12', '23', '2', '0', NULL, '2017-12-12')";
+            java.sql.Date pd = new java.sql.Date(purchaseDate.getTime());
+            String query = "INSERT INTO product (id, name, brand_id, sell_price, purchase_price, body_size, is_sold, sell_date, purchase_date) VALUES" +
+                    " ( '"+ productId +"','"+name+"','"+brand.getId()+"','"+sellPrice+"','"+purchasePrice+"','"+bodySize+"',"+false+",'"+pd+"','"+pd+"')";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (SQLException e) {
