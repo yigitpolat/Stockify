@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField productCodeField;
-	private JTextField productNameField;   //
+	private JTextField productNameField;   
 	private JTextField brandNameField;
 	private JTextField bodySizeField;
 	private JTextField purchasePriceField;
@@ -31,6 +31,10 @@ public class MainFrame extends JFrame {
 	private JTextField refundDateField;
 	private JTextField startDateField;
 	private JTextField EndDateField;
+	private JTextField refundedProductCodeField;
+	private JTextField soldProductCodeField;
+	private JTextField salePriceField4;
+	private JTextField saleDateField4;
 	private ProductHandler productHandler = new ProductHandler(this);
 
 	/**
@@ -72,6 +76,7 @@ public class MainFrame extends JFrame {
 		lblPurchasePrice.setBounds(43, 145, 121, 15);
 		addProductPanel.add(lblPurchasePrice);
 		
+		// 
 		JLabel lblSalePrice = new JLabel("Sale Price");
 		lblSalePrice.setBounds(43, 172, 121, 15);
 		addProductPanel.add(lblSalePrice);
@@ -105,6 +110,7 @@ public class MainFrame extends JFrame {
 		addProductPanel.add(purchasePriceField);
 		purchasePriceField.setColumns(10);
 
+		//will change
 		salePriceField = new JTextField();
 		salePriceField.setBounds(176, 172, 114, 19);
 		addProductPanel.add(salePriceField);
@@ -210,6 +216,43 @@ public class MainFrame extends JFrame {
 		
 		JPanel changeProductPanel = new JPanel();
 		mainPanel.addTab("Change Product", null, changeProductPanel, null);
+		changeProductPanel.setLayout(null);
+		
+		JLabel lblRefundedProductCode = new JLabel("Refunded Product Code");
+		lblRefundedProductCode.setBounds(50, 55, 168, 15);
+		changeProductPanel.add(lblRefundedProductCode);
+		
+		JLabel lblSoldProductCode = new JLabel("Sold Product Code");
+		lblSoldProductCode.setBounds(50, 82, 168, 15);
+		changeProductPanel.add(lblSoldProductCode);
+		
+		JLabel lblSalePrice4 = new JLabel("Sale Price");
+		lblSalePrice4.setBounds(50, 109, 60, 15);
+		changeProductPanel.add(lblSalePrice4);
+		
+		JLabel lblSaleDate = new JLabel("Sale Date");
+		lblSaleDate.setBounds(50, 136, 145, 15);
+		changeProductPanel.add(lblSaleDate);
+		
+		refundedProductCodeField = new JTextField();
+		refundedProductCodeField.setBounds(236, 53, 114, 19);
+		changeProductPanel.add(refundedProductCodeField);
+		refundedProductCodeField.setColumns(10);
+		
+		soldProductCodeField = new JTextField();
+		soldProductCodeField.setBounds(236, 80, 114, 19);
+		changeProductPanel.add(soldProductCodeField);
+		soldProductCodeField.setColumns(10);
+		
+		salePriceField4 = new JTextField();
+		salePriceField4.setBounds(236, 107, 114, 19);
+		changeProductPanel.add(salePriceField4);
+		salePriceField4.setColumns(10);
+		
+		saleDateField4 = new JTextField();
+		saleDateField4.setBounds(236, 134, 114, 19);
+		changeProductPanel.add(saleDateField4);
+		saleDateField4.setColumns(10);
 		
 		JPanel refundProductPanel = new JPanel();
 		mainPanel.addTab("RefundProduct", null, refundProductPanel, null);
@@ -232,6 +275,7 @@ public class MainFrame extends JFrame {
 		refundProductPanel.add(productCodeField3);
 		productCodeField3.setColumns(10);
 		
+		//will change
 		SalePriceField3 = new JTextField();
 		SalePriceField3.setBounds(182, 93, 114, 17);
 		refundProductPanel.add(SalePriceField3);
