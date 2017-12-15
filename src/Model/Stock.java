@@ -16,10 +16,14 @@ public class Stock {
 	}
 
 	public void init() {
-		brandManager = new BrandManager();
 		database = new Database();
 		database.connect();
 		connection = database.getConnection();
+		brandManager = new BrandManager(this);
+	}
+
+	public Database getDB(){
+		return database;
 	}
 
 	public ArrayList<Product> getProducts() {
@@ -38,7 +42,6 @@ public class Stock {
 	public void sellProduct(int productId, float sellPrice, java.util.Date sellDate) {
 		try {
 			java.sql.Date sd = new java.sql.Date(sellDate.getTime());
-			System.out.println(sd.toString());
 			String query = "UPDATE product SET is_sold= true, sell_price="+ sellPrice +", sell_date='"+ sd+"' where id=" + productId;
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(query);
@@ -49,7 +52,7 @@ public class Stock {
 	}
 
 	public void addProduct(int productId, String name, Brand brand, float sellPrice, float purchasePrice,
-			java.util.Date purchaseDate, String bodySize, boolean isSold) {
+						   java.util.Date purchaseDate, String bodySize, boolean isSold) {
 		// TODO: addProduct progress via database connection
 		isSold = false;
 		try {
@@ -67,13 +70,22 @@ public class Stock {
 	}
 
 	public void refundProduct(int productId) {
-		// TODO: refundProduct progress via database connection
+		try {
+			String query = "UPDATE product SET sell_price = 0, is_sold = false where id =" + productId ;
+			Statement statement = connection.createStatement();
+			statement.executeUpdate(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		updateProducts();
+
+		// TODO: refundProduct progress via database connection
 	}
 
 	public void changeProduct(int refundedProductId, int soldProductId, float sellPrice, Date sellDate) {
 		refundProduct(refundedProductId);
 		sellProduct(soldProductId, sellPrice, sellDate);
+		updateProducts();
 	}
 
 	public void updateProducts() {
@@ -119,3 +131,6 @@ public class Stock {
 		return brandManager;
 	}
 }
+
+
+

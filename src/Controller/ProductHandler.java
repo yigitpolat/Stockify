@@ -13,14 +13,14 @@ public class ProductHandler {
     private MainFrame mainFrame;
     private Stock stock;
     private BrandManager brandManager;
-    private BrandHandler brandHandler = new BrandHandler(mainFrame,stock);
+    private BrandHandler brandHandler;
 
     public ProductHandler(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         this.stock= new Stock();
         this.brandManager = stock.getBrandManager();
+        this.brandHandler = new BrandHandler(mainFrame,stock);
     }
-
     /*In addProduct function, ProductHandler firstly create the product
     it takes information GUI, then communicate with model
     * */
@@ -41,7 +41,6 @@ public class ProductHandler {
             if (product.isSold()) {
                 JOptionPane.showMessageDialog(mainFrame, "This product is already sold!");
             } else {
-                System.out.println(sellDate.toString());
                 stock.sellProduct(productId, sellPrice, sellDate);
                 JOptionPane.showMessageDialog(mainFrame, "This product is successfully sold!");
             }
@@ -68,5 +67,9 @@ public class ProductHandler {
 
     public BrandHandler getBrandHandler(){
         return brandHandler;
+    }
+
+    public void changeProduct(int refundedId, int soldId, int salePrice, Date sellDate) {
+        stock.changeProduct(refundedId,soldId,salePrice,sellDate);
     }
 }
