@@ -20,14 +20,14 @@ public class MainFrame extends JFrame {
 	private JTextField brandNameField;
 	private JTextField bodySizeField;
 	private JTextField purchasePriceField;
-	private JTextField salePriceField;
+//	private JTextField salePriceField;
 	private JTextField purchaseDateField;
 	private JTextField productCodeField2;
 	private JTextField salePriceField2;
 	private JTextField saleDateField2;
 	private JTextField brandNameField2;
 	private JTextField productCodeField3;
-	private JTextField SalePriceField3;
+//	private JTextField SalePriceField3;
 	private JTextField refundDateField;
 	private JTextField startDateField;
 	private JTextField EndDateField;
@@ -76,10 +76,11 @@ public class MainFrame extends JFrame {
 		lblPurchasePrice.setBounds(43, 145, 121, 15);
 		addProductPanel.add(lblPurchasePrice);
 		
-		// 
-		JLabel lblSalePrice = new JLabel("Sale Price");
-		lblSalePrice.setBounds(43, 172, 121, 15);
-		addProductPanel.add(lblSalePrice);
+		//will change coordinates
+		//will delete
+//		JLabel lblSalePrice = new JLabel("Sale Price");
+//		lblSalePrice.setBounds(43, 172, 121, 15);
+//		addProductPanel.add(lblSalePrice);
 		
 		JLabel lblPurchaseDate = new JLabel("Purchase Date");
 		lblPurchaseDate.setBounds(43, 199, 94, 15);
@@ -109,12 +110,13 @@ public class MainFrame extends JFrame {
 		purchasePriceField.setBounds(176, 145, 114, 19);
 		addProductPanel.add(purchasePriceField);
 		purchasePriceField.setColumns(10);
-
-		//will change
-		salePriceField = new JTextField();
-		salePriceField.setBounds(176, 172, 114, 19);
-		addProductPanel.add(salePriceField);
-		salePriceField.setColumns(10);
+	
+		//will change coordinates
+		//will delete
+//		salePriceField = new JTextField();
+//		salePriceField.setBounds(176, 172, 114, 19);
+//		addProductPanel.add(salePriceField);
+//		salePriceField.setColumns(10);
 
 		purchaseDateField = new JTextField();
 		purchaseDateField.setBounds(176, 199, 114, 19);
@@ -272,9 +274,11 @@ public class MainFrame extends JFrame {
 		lblProductCode3.setBounds(66, 67, 83, 15);
 		refundProductPanel.add(lblProductCode3);
 		
-		JLabel lblSalePrice3 = new JLabel("Sale Price");
-		lblSalePrice3.setBounds(66, 94, 83, 15);
-		refundProductPanel.add(lblSalePrice3);
+		//will change coordinates
+		//will delete
+//		JLabel lblSalePrice3 = new JLabel("Sale Price");
+//		lblSalePrice3.setBounds(66, 94, 83, 15);
+//		refundProductPanel.add(lblSalePrice3);
 		
 		JLabel lblRefundDate = new JLabel("Refund Date");
 		lblRefundDate.setBounds(66, 121, 83, 15);
@@ -285,11 +289,12 @@ public class MainFrame extends JFrame {
 		refundProductPanel.add(productCodeField3);
 		productCodeField3.setColumns(10);
 		
-		//will change
-		SalePriceField3 = new JTextField();
-		SalePriceField3.setBounds(182, 93, 114, 17);
-		refundProductPanel.add(SalePriceField3);
-		SalePriceField3.setColumns(10);
+		//will change coordinates
+		//will delete
+//		SalePriceField3 = new JTextField();
+//		SalePriceField3.setBounds(182, 93, 114, 17);
+//		refundProductPanel.add(SalePriceField3);
+//		SalePriceField3.setColumns(10);
 		
 		refundDateField = new JTextField();
 		refundDateField.setBounds(182, 119, 114, 19);
@@ -313,20 +318,20 @@ public class MainFrame extends JFrame {
 		showIncomeAndExpPanel.setLayout(null);
 
 		JLabel lblStartDate = new JLabel("Start Date");
-		lblStartDate.setBounds(164, 58, 102, 15);
+		lblStartDate.setBounds(44, 34, 102, 15);
 		showIncomeAndExpPanel.add(lblStartDate);
 		
 		JLabel lblEndDate = new JLabel("End Date");
-		lblEndDate.setBounds(340, 58, 102, 15);
+		lblEndDate.setBounds(44, 70, 102, 15);
 		showIncomeAndExpPanel.add(lblEndDate);
 		
 		startDateField = new JTextField();
-		startDateField.setBounds(164, 100, 114, 19);
+		startDateField.setBounds(164, 32, 114, 19);
 		showIncomeAndExpPanel.add(startDateField);
 		startDateField.setColumns(10);
 		
 		EndDateField = new JTextField();
-		EndDateField.setBounds(340, 100, 114, 19);
+		EndDateField.setBounds(164, 68, 114, 19);
 		showIncomeAndExpPanel.add(EndDateField);
 		EndDateField.setColumns(10);
 		
