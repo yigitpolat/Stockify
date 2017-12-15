@@ -2,22 +2,28 @@ package Tests;
 
 import java.util.Date;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import Controller.*;
-import Model.*;
 import View.*;
 
 public class ProductHandlerTest {
 
 	private MainFrame mainFrame;
-	private BrandManager manager = new BrandManager();
 	private Date date = new Date();
 	private ProductHandler handler;
+	
 
 	public ProductHandlerTest() {
 		handler = new ProductHandler(mainFrame);
+		handler.delete(3);
+		handler.delete(4);
+		handler.delete(6);
+		handler.delete(7);
+		handler.delete(8);
+//		handler.delete(5);
+//		handler.delete(9);
+
 	}
 
 	@Test
@@ -62,6 +68,6 @@ public class ProductHandlerTest {
 	@Test
 	public void refundProductSold() {
 		handler.addProduct(8, "product1", "brand", 35.5f, 25.5f, date, "M");
-		handler.refundProduct(7, 55, date.toString());
+		handler.refundProduct(8, 35, date.toString());
 	}
 }
