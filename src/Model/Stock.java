@@ -70,7 +70,7 @@ public class Stock {
     }
 
     public void updateProducts() {
-        String query = "SELECT * FROM product";
+        String query = "SELECT * FROM product ORDER BY id";
         ResultSet rs = databaseManager.executeQuery(query);
         updateProductsFromResultSet(rs);
     }
