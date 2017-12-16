@@ -11,18 +11,19 @@ public class Stock {
     private ArrayList<Product> products = new ArrayList<>();
 
     public Stock() {
-        init();
+        databaseManager = new DatabaseManager();
+        brandManager = new BrandManager(this);
         updateProducts();
     }
 
-    public void init() {
-        databaseManager = new DatabaseManager();
-        brandManager = new BrandManager(this);
-    }
-
-    public DatabaseManager getDatabaseManager(){
+    public DatabaseManager getDatabaseManager() {
         return databaseManager;
     }
+
+    public BrandManager getBrandManager() {
+        return brandManager;
+    }
+
     public ArrayList<Product> getProducts() {
         updateProducts();
         return products;
@@ -98,9 +99,6 @@ public class Stock {
         products = updatedProducts;
     }
 
-    public BrandManager getBrandManager() {
-        return brandManager;
-    }
 }
 
 
