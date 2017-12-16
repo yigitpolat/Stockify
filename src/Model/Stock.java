@@ -31,6 +31,7 @@ public class Stock {
     }
 
     public Product getProductWithId(int id) {
+        updateProducts();
         for (Product product : products) {
             if (id == product.getId())
                 return product;

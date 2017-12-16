@@ -22,6 +22,7 @@ public class BrandManager {
     public ArrayList<Brand> getBrands() {
         return brands;
     }
+
     public Brand getBrandWithID(int id) {
         updateBrands();
         for (Brand brand : brands) {
@@ -48,29 +49,25 @@ public class BrandManager {
     }
 
     public void updateBrands() {
-        ArrayList<Brand> updatedBrands = new ArrayList<>();
         String query = "SELECT * FROM brand";
-        try{
-            ResultSet rs = stock.getDatabaseManager().executeQuery(query);
-            while (rs.next()){
-                updatedBrands.add(getBrandFromResultSet(rs));
+        ResultSet rs = stock.getDatabaseManager().executeQuery(query);
+        updateBrandsFromResultSet(rs);
+    }
+
+    private void updateBrandsFromResultSet(ResultSet rs) {
+        ArrayList<Brand> updatedBrands = new ArrayList<>();
+        Brand brand = null;
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                brand = new Brand(id, name);
+                updatedBrands.add(brand);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         brands = updatedBrands;
-    }
-
-    private Brand getBrandFromResultSet(ResultSet rs) {
-        Brand brand = null;
-        try{
-            int id = rs.getInt("id");
-            String name = rs.getString("name");
-            brand = new Brand(id,name);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return brand;
     }
 
 }
