@@ -5,6 +5,7 @@ import Model.Stock;
 import View.MainFrame;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 public class BrandHandler {
     private MainFrame mainFrame;
@@ -15,7 +16,7 @@ public class BrandHandler {
         }
 
         public void addBrand(String brandName){
-            stock.getBrandManager().getBrands().add(new Brand(1,brandName));
+            stock.getBrandManager().addBrand(brandName);
             JOptionPane.showMessageDialog(mainFrame, "Brand Successfully added!");
         }
 }

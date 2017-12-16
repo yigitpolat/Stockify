@@ -39,7 +39,7 @@ public class BrandManager {
         return null;
     }
 
-    public void addBrand(String brandName) throws SQLException {
+    public void addBrand(String brandName){
         String query = "INSERT INTO brand (name) VALUES" +
                 " ( '" + brandName + "')";
         stock.getDatabaseManager().executeUpdate(query);

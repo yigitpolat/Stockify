@@ -20,7 +20,17 @@ public class DatabaseTest {
         //
         // Print list of products Test
         ArrayList<Product> products = stock.getProducts();
+        System.out.println("Products");
         for(Product p : products)
             System.out.println(p.toString());
+        // Print list of brands Test
+        ArrayList<Brand> brands = stock.getBrandManager().getBrands();
+        System.out.println("Brands");
+        for(Brand b : brands)
+            System.out.println(b.toString());
+        // Print income&expenditure tests
+        System.out.println("Income : " + stock.getIncomeBetween(new java.util.Date(117,11,15),new java.util.Date(117,11,17)));
+        System.out.println("Expenditure : " + stock.getExpenditureBetween(new java.util.Date(117,11,15),new java.util.Date(117,11,17)));
+        System.out.println("Profilt : " + stock.getProfitBetween(new java.util.Date(117,11,15),new java.util.Date(117,11,17)));
     }
 }

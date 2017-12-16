@@ -39,6 +39,40 @@ public class Stock {
         return null;
     }
 
+    public float getIncomeBetween(java.util.Date _start, java.util.Date _end) {
+        java.sql.Date start = new java.sql.Date(_start.getTime());
+        java.sql.Date end = new java.sql.Date(_end.getTime());
+        String query = "SELECT sell_price FROM product WHERE sell_date BETWEEN '" + start + "' AND '" + end + "'";
+        ResultSet rs = databaseManager.executeQuery(query);
+        float total = getTotalValueFrom(rs, "sell_price");
+        return total;
+    }
+
+    public float getExpenditureBetween(java.util.Date _start, java.util.Date _end) {
+        java.sql.Date start = new java.sql.Date(_start.getTime());
+        java.sql.Date end = new java.sql.Date(_end.getTime());
+        String query = "SELECT purchase_price FROM product WHERE purchase_date BETWEEN '" + start + "' AND '" + end + "'";
+        ResultSet rs = databaseManager.executeQuery(query);
+        float total = getTotalValueFrom(rs, "purchase_price");
+        return total;
+    }
+
+    public float getProfitBetween(java.util.Date start, java.util.Date end) {
+        return getIncomeBetween(start, end) - getExpenditureBetween(start, end);
+    }
+
+    public float getTotalValueFrom(ResultSet rs, String columnName) {
+        float total = 0;
+        try {
+            while (rs.next()) {
+                total += rs.getFloat(columnName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
     public void sellProduct(int productId, float sellPrice, java.util.Date sellDate) {
         java.sql.Date sd = new java.sql.Date(sellDate.getTime());
         String query = "UPDATE product SET is_sold= true, sell_price=" + sellPrice + ", sell_date='" + sd + "' where id=" + productId;
