@@ -13,8 +13,6 @@ public class BrandManager {
     private Stock stock;
 
     public BrandManager(Stock stock) {
-        brands.add(new Brand(1, "brand"));
-        brands.add(new Brand(2, "brand2"));
         this.stock = stock;
         updateBrands();
     }
