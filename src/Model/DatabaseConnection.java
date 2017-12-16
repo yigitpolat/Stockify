@@ -2,10 +2,10 @@ package Model;
 
 import java.sql.*;
 
-public class Database {
+public class DatabaseConnection {
     private Connection connection = null;
 
-    public Database() {
+    public DatabaseConnection() {
     }
 
     public void connect() {
