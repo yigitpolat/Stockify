@@ -91,7 +91,7 @@ public class MainFrame extends JFrame {
 		lblEndDate.setBounds(44, 70, 102, 15);
 		showIncomeAndExpPanel.add(lblEndDate);
 
-		startDateField = new JTextField();
+        startDateField = new JTextField();
 		startDateField.setBounds(164, 32, 114, 19);
 		showIncomeAndExpPanel.add(startDateField);
 		startDateField.setColumns(10);
@@ -104,6 +104,45 @@ public class MainFrame extends JFrame {
 		JButton btnList = new JButton("List");
 		btnList.setBounds(164, 160, 106, 25);
 		showIncomeAndExpPanel.add(btnList);
+
+
+		btnList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+                java.util.Date startDate=null;
+                java.util.Date endDate=null;
+                try {
+                    startDate = format.parse(startDateField.getText());
+                    endDate = format.parse(EndDateField.getText());
+
+
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
+
+                float income = productHandler.getIncome(startDate,endDate);
+                float expenditure = productHandler.getExpenditure(startDate,endDate);
+                float profit = productHandler.getProfitBetween(startDate,endDate);
+
+                JLabel incomeLabel = new JLabel("Income: "+income);
+                incomeLabel.setBounds(350,34,102,15);
+                showIncomeAndExpPanel.add(incomeLabel);
+                incomeLabel.setVisible(true);
+
+                JLabel expenditureLabel = new JLabel("Expenditure: "+ expenditure);
+                expenditureLabel.setBounds(350,70,120,15);
+                showIncomeAndExpPanel.add(expenditureLabel);
+                expenditureLabel.setVisible(true);
+
+                JLabel profitLabel = new JLabel("Profit: "+ profit);
+                profitLabel.setBounds(350,106,102,15);
+                showIncomeAndExpPanel.add(profitLabel);
+                profitLabel.setVisible(true);
+
+                showIncomeAndExpPanel.repaint();
+            }
+        });
 	}
 
 	private void createRefundProductPanel() {

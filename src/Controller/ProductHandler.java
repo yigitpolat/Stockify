@@ -72,4 +72,16 @@ public class ProductHandler {
     public void changeProduct(int refundedId, int soldId, int salePrice, Date sellDate) {
         stock.changeProduct(refundedId,soldId,salePrice,sellDate);
     }
+
+    public float getIncome(Date start, Date end){
+        return stock.getIncomeBetween(start,end);
+    }
+
+    public float getExpenditure(Date start, Date end){
+        return stock.getExpenditureBetween(start,end);
+    }
+
+    public float getProfitBetween(Date start, Date end){
+        return  stock.getProfitBetween(start,end);
+    }
 }
