@@ -12,7 +12,6 @@ public class ProductHandlerTest {
 	private MainFrame mainFrame;
 	private Date date = new Date();
 	private ProductHandler handler;
-	
 
 	public ProductHandlerTest() {
 		handler = new ProductHandler(mainFrame);
@@ -24,6 +23,10 @@ public class ProductHandlerTest {
 //		handler.delete(5);
 //		handler.delete(9);
 
+	}
+	@Test
+	public void getBrandHandler() {
+		BrandHandler brandH = handler.getBrandHandler();
 	}
 
 	@Test
@@ -69,5 +72,25 @@ public class ProductHandlerTest {
 	public void refundProductSold() {
 		handler.addProduct(8, "product1", "brand", 35.5f, 25.5f, date, "M");
 		handler.refundProduct(8, 35, date.toString());
+	}
+	
+	@Test
+	public void getIncome() {
+		float f = handler.getIncome(date, date);
+	}
+	
+	@Test
+	public void getExpenditure() {
+		float f = handler.getExpenditure(date, date);
+	}
+	
+	@Test
+	public void getProfitBetween() {
+		float f = handler.getProfitBetween(date, date);
+	}
+	
+	@Test
+	public void changeProduct() {
+		handler.changeProduct(6, 6, 35, date);
 	}
 }
