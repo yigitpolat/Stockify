@@ -1,4 +1,7 @@
-package Model;
+package Model.Database;
+
+import Model.Product;
+import Model.Stock;
 
 import java.util.ArrayList;
 import java.util.Date;
