@@ -1,35 +1,41 @@
 package View;
 
 import Controller.ProductHandler;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 
 public class MainFrame extends JFrame {
 
-	//test
 	private JPanel contentPane;
 	private JTextField productCodeField;
 	private JTextField productNameField;
 	private JTextField brandNameField;
 	private JTextField bodySizeField;
 	private JTextField purchasePriceField;
-	//	private JTextField salePriceField;
 	private JTextField purchaseDateField;
 	private JTextField productCodeField2;
 	private JTextField salePriceField2;
 	private JTextField saleDateField2;
 	private JTextField brandNameField2;
 	private JTextField productCodeField3;
-	//	private JTextField SalePriceField3;
 	private JTextField refundDateField;
 	private JTextField startDateField;
 	private JTextField EndDateField;
@@ -37,9 +43,12 @@ public class MainFrame extends JFrame {
 	private JTextField soldProductCodeField;
 	private JTextField salePriceField4;
 	private JTextField saleDateField4;
+	private DefaultTableModel model;
 	private ProductHandler productHandler = new ProductHandler(this);
-
 	private JTabbedPane mainPanel;
+	private JTable table;
+
+
 	/**
 	 * Create the frame.
 	 */
@@ -64,6 +73,7 @@ public class MainFrame extends JFrame {
 		createProductListPanel();
 	}
 
+
 	private void createProductListPanel() {
 		JPanel productListPanel = new JPanel();
 		mainPanel.addTab("Show Products", null, productListPanel, null);
@@ -76,6 +86,16 @@ public class MainFrame extends JFrame {
 		JButton btnSortList = new JButton("Sort List");
 		btnSortList.setBounds(102, 131, 106, 25);
 		productListPanel.add(btnSortList);
+
+
+		Object rowData[][] = { { "Row1-Column1", "Row1-Column2", "Row1-Column3", "Row1-Column4",
+				"Row1-Column5", "Row1-Column6", "Row1-Column7", "Row1-Column8","Row1-Column9" }};
+		Object columnNames[] = { "id", "Name", "Brand", "Sell Price", "Purchase Price",
+				"Purchase Date", "Sell Date", "Body Size", "isSold"};
+		JTable table = new JTable(rowData, columnNames);
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(250, 15, 500, 250);
+		productListPanel.add(scrollPane);
 	}
 
 	private void createShowIncomePanel() {
@@ -91,7 +111,7 @@ public class MainFrame extends JFrame {
 		lblEndDate.setBounds(44, 70, 102, 15);
 		showIncomeAndExpPanel.add(lblEndDate);
 
-        startDateField = new JTextField();
+		startDateField = new JTextField();
 		startDateField.setBounds(164, 32, 114, 19);
 		showIncomeAndExpPanel.add(startDateField);
 		startDateField.setColumns(10);
@@ -102,47 +122,52 @@ public class MainFrame extends JFrame {
 		EndDateField.setColumns(10);
 
 		JButton btnList = new JButton("List");
-		btnList.setBounds(164, 160, 106, 25);
+		btnList.setBounds(164, 99, 106, 25);
 		showIncomeAndExpPanel.add(btnList);
+
+		JLabel incomeLabel = new JLabel("Income: ");
+		incomeLabel.setBounds(350,34,102,15);
+		showIncomeAndExpPanel.add(incomeLabel);
+		incomeLabel.setVisible(true);
+
+		JLabel expenditureLabel = new JLabel("Expenditure: ");
+		expenditureLabel.setBounds(350,70,120,15);
+		showIncomeAndExpPanel.add(expenditureLabel);
+		expenditureLabel.setVisible(true);
+
+		JLabel profitLabel = new JLabel("Profit: ");
+		profitLabel.setBounds(350,106,102,15);
+		showIncomeAndExpPanel.add(profitLabel);
+		profitLabel.setVisible(true);
 
 
 		btnList.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-                java.util.Date startDate=null;
-                java.util.Date endDate=null;
-                try {
-                    startDate = format.parse(startDateField.getText());
-                    endDate = format.parse(EndDateField.getText());
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
 
-                } catch (ParseException e1) {
-                    e1.printStackTrace();
-                }
+				DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+				java.util.Date startDate=null;
+				java.util.Date endDate=null;
+				try {
+					startDate = format.parse(startDateField.getText());
+					endDate = format.parse(EndDateField.getText());
 
-                float income = productHandler.getIncome(startDate,endDate);
-                float expenditure = productHandler.getExpenditure(startDate,endDate);
-                float profit = productHandler.getProfitBetween(startDate,endDate);
 
-                JLabel incomeLabel = new JLabel("Income: "+income);
-                incomeLabel.setBounds(350,34,102,15);
-                showIncomeAndExpPanel.add(incomeLabel);
-                incomeLabel.setVisible(true);
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
 
-                JLabel expenditureLabel = new JLabel("Expenditure: "+ expenditure);
-                expenditureLabel.setBounds(350,70,120,15);
-                showIncomeAndExpPanel.add(expenditureLabel);
-                expenditureLabel.setVisible(true);
+				float income = productHandler.getIncome(startDate,endDate);
+				float expenditure = productHandler.getExpenditure(startDate,endDate);
+				float profit = productHandler.getProfitBetween(startDate,endDate);
 
-                JLabel profitLabel = new JLabel("Profit: "+ profit);
-                profitLabel.setBounds(350,106,102,15);
-                showIncomeAndExpPanel.add(profitLabel);
-                profitLabel.setVisible(true);
-
-                showIncomeAndExpPanel.repaint();
-            }
-        });
+				incomeLabel.setText("Income: "+income);
+				expenditureLabel.setText("Expenditure: "+ expenditure);
+				profitLabel.setText("Profit: "+ profit);
+				showIncomeAndExpPanel.repaint();
+			}
+		});
 	}
 
 	private void createRefundProductPanel() {
@@ -154,14 +179,8 @@ public class MainFrame extends JFrame {
 		lblProductCode3.setBounds(66, 67, 83, 15);
 		refundProductPanel.add(lblProductCode3);
 
-		//will change coordinates
-		//will delete
-//		JLabel lblSalePrice3 = new JLabel("Sale Price");
-//		lblSalePrice3.setBounds(66, 94, 83, 15);
-//		refundProductPanel.add(lblSalePrice3);
-
 		JLabel lblRefundDate = new JLabel("Refund Date");
-		lblRefundDate.setBounds(66, 121, 83, 15);
+		lblRefundDate.setBounds(66, 94, 83, 15);
 		refundProductPanel.add(lblRefundDate);
 
 		productCodeField3 = new JTextField();
@@ -169,20 +188,13 @@ public class MainFrame extends JFrame {
 		refundProductPanel.add(productCodeField3);
 		productCodeField3.setColumns(10);
 
-		//will change coordinates
-		//will delete
-//		SalePriceField3 = new JTextField();
-//		SalePriceField3.setBounds(182, 93, 114, 17);
-//		refundProductPanel.add(SalePriceField3);
-//		SalePriceField3.setColumns(10);
-
 		refundDateField = new JTextField();
-		refundDateField.setBounds(182, 119, 114, 19);
+		refundDateField.setBounds(182, 92, 114, 19);
 		refundProductPanel.add(refundDateField);
 		refundDateField.setColumns(10);
 
 		JButton btnRefund = new JButton("Refund");
-		btnRefund.setBounds(182, 155, 106, 25);
+		btnRefund.setBounds(182, 123, 106, 25);
 		refundProductPanel.add(btnRefund);
 		btnRefund.addActionListener(new ActionListener() {
 			@Override
@@ -236,7 +248,7 @@ public class MainFrame extends JFrame {
 		saleDateField4.setColumns(10);
 
 		JButton changeProductButton = new JButton("Change");
-		changeProductButton.setBounds(200,164,106,25);
+		changeProductButton.setBounds(236,165,106,25);
 		changeProductPanel.add(changeProductButton);
 		changeProductButton.addActionListener(new ActionListener() {
 			@Override
@@ -263,16 +275,16 @@ public class MainFrame extends JFrame {
 		addBrandPanel.setLayout(null);
 
 		JLabel lblBrandName2 = new JLabel("Brand Name");
-		lblBrandName2.setBounds(73, 133, 93, 15);
+		lblBrandName2.setBounds(72, 51, 93, 15);
 		addBrandPanel.add(lblBrandName2);
 
 		brandNameField2 = new JTextField();
-		brandNameField2.setBounds(184, 131, 114, 19);
+		brandNameField2.setBounds(183, 49, 114, 19);
 		addBrandPanel.add(brandNameField2);
 		brandNameField2.setColumns(10);
 
 		JButton btnAdd2 = new JButton("Add");
-		btnAdd2.setBounds(184, 162, 106, 25);
+		btnAdd2.setBounds(183, 80, 106, 25);
 		addBrandPanel.add(btnAdd2);
 		btnAdd2.addActionListener(new ActionListener() {
 			@Override
@@ -364,14 +376,8 @@ public class MainFrame extends JFrame {
 		lblPurchasePrice.setBounds(43, 145, 121, 15);
 		addProductPanel.add(lblPurchasePrice);
 
-		//will change coordinates
-		//will delete
-//		JLabel lblSalePrice = new JLabel("Sale Price");
-//		lblSalePrice.setBounds(43, 172, 121, 15);
-//		addProductPanel.add(lblSalePrice);
-
 		JLabel lblPurchaseDate = new JLabel("Purchase Date");
-		lblPurchaseDate.setBounds(43, 199, 94, 15);
+		lblPurchaseDate.setBounds(43, 178, 94, 15);
 		addProductPanel.add(lblPurchaseDate);
 
 		productCodeField = new JTextField();
@@ -399,20 +405,13 @@ public class MainFrame extends JFrame {
 		addProductPanel.add(purchasePriceField);
 		purchasePriceField.setColumns(10);
 
-		//will change coordinates
-		//will delete
-//		salePriceField = new JTextField();
-//		salePriceField.setBounds(176, 172, 114, 19);
-//		addProductPanel.add(salePriceField);
-//		salePriceField.setColumns(10);
-
 		purchaseDateField = new JTextField();
-		purchaseDateField.setBounds(176, 199, 114, 19);
+		purchaseDateField.setBounds(176, 176, 114, 19);
 		addProductPanel.add(purchaseDateField);
 		purchaseDateField.setColumns(10);
 
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(176, 230, 106, 25);
+		btnAdd.setBounds(176, 207, 106, 25);
 		addProductPanel.add(btnAdd);
 		btnAdd.addActionListener(new ActionListener() {
 			@Override
@@ -433,9 +432,7 @@ public class MainFrame extends JFrame {
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
-
 			}
 		});
 	}
-
 }
