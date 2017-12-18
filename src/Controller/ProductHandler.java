@@ -7,6 +7,7 @@ import Model.Stock;
 import View.MainFrame;
 
 import javax.swing.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProductHandler {
@@ -73,6 +74,26 @@ public class ProductHandler {
         stock.changeProduct(refundedId,soldId,salePrice,sellDate);
     }
 
+    public Object[][] getProductsArray(){
+        Object[][] products = new Object[stock.getProducts().size()][9];
+        int i = 0;
+        for(Product p:stock.getProducts()){
+            Object[] product = new Object[9];
+            product[0] = p.getId();
+            product[1] = p.getName();
+            product[2] = p.getBrand().getName();
+            product[3] = p.getSellPrice();
+            product[4] = p.getPurchasePrice();
+            product[5] =new SimpleDateFormat("MM-dd-yyyy").format(p.getPurchaseDate());
+            product[6] = new SimpleDateFormat("MM-dd-yyyy").format(p.getSellDate());
+            product[7] = p.getBodySize();
+            product[8] = p.isSold();
+            products[i] = product;
+            i++;
+        }
+
+        return products;
+    }
     public float getIncome(Date start, Date end){
         return stock.getIncomeBetween(start,end);
     }

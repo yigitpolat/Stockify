@@ -66,6 +66,8 @@ public class Product {
         this.sellPrice = sellPrice;
     }
 
+    public Date getSellDate() {return sellDate;}
+
     public Brand getBrand() {
         return brand;
     }
