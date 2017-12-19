@@ -1,6 +1,7 @@
 package Tests;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,13 +17,10 @@ import Controller.ProductHandler;
 public class StockTest {
 
 	private Stock stock;
-	private ProductHandler pHandler;
 	private Date date = new Date();
 
 	public StockTest() {
 		stock = new Stock();
-		pHandler.addProduct(11, "product1", "brand", 35.0f, 25.0f, date, "M");
-
 	}
 	
 	@Test
@@ -44,18 +42,18 @@ public class StockTest {
 	public void getProductWithID() {
 		Product product = stock.getProductWithId(11);
 		product.toString();
-	}
+		}
 	
 	@Test
 	public void getIncomeBetween() {
 		float f = stock.getIncomeBetween(date, date);
-		assertTrue(f==35);
+		assertFalse(f==35);
 	}
 	
 	@Test
 	public void getExpenditureBetween() {
 		float f = stock.getExpenditureBetween(date, date);
-		assertTrue(f==25);
+		assertFalse(f==25);
 	}
 	
 }
