@@ -95,17 +95,17 @@ public class MainFrame extends JFrame {
                 "Purchase Date", "Sell Date", "Body Size", "isSold"};
         JTable table = new JTable(productHandler.getProductsArray(), columnNames);
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(250, 15, 1000, 250);
+        scrollPane.setBounds(250, 15, 960, 250);
 
         productListPanel.add(scrollPane);
         btnUpdateList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 productListPanel.remove(scrollPane);
-		        JTable table = new JTable(productHandler.getProductsArray(), columnNames);
-                JScrollPane scrollPane = new JScrollPane(table);
-                scrollPane.setBounds(250, 15, 1000, 250);
-                productListPanel.add(scrollPane);
+		        JTable table2 = new JTable(productHandler.getProductsArray(), columnNames);
+                JScrollPane scrollPane2 = new JScrollPane(table2);
+                scrollPane2.setBounds(250, 15, 960, 250);
+                productListPanel.add(scrollPane2);
             }
         });
     }

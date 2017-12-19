@@ -16,6 +16,8 @@ public class DatabaseConnection {
             String user = "hriubare_admin";
             String pass = "U8mzDW6OI[tq";
             connection = DriverManager.getConnection(url, user, pass);
+            Statement st = connection.createStatement();
+            st.executeUpdate("SET SESSION wait_timeout=5000");
         } catch (Exception e) {
             e.printStackTrace();
         }
